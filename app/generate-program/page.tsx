@@ -136,7 +136,7 @@ const GenerateProgramPage = () => {
           ? `${user.firstName} ${user.lastName || ""}`.trim()
           : "There";
 
-        await vapi.start("407823c9-b683-4507-984a-9c0233f71b76", {
+        vapi.start("407823c9-b683-4507-984a-9c0233f71b76", {
           variableValues: {
             full_name: fullName,
             user_id: user?.id,
@@ -214,7 +214,7 @@ const GenerateProgramPage = () => {
                 </div>
               </div>
 
-              <h2 className="text-xl font-bold text-foreground">CodeFlex AI</h2>
+              <h2 className="text-xl font-bold text-foreground">FitVerse.ai</h2>
               <p className="text-sm text-muted-foreground mt-1">
                 Fitness & Diet Coach
               </p>
