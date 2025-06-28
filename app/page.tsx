@@ -96,18 +96,18 @@ export default function Home() {
                 <div className="relative overflow-hidden rounded-lg bg-cyber-black size-full">
                   <div className="relative w-full aspect-[3/1] min-h-[300px] md:min-h-[700px]">
                     <Image
-                      src="/hero-ai3.png"
+                      src="/hero-ai4.png"
                       alt="AI Fitness Coach"
                       fill
                       sizes="(min-width: 1280px) 1280px, 100vw"
-                      className="object-cover object-center"
+                      className="object-cover object-bottom"
                       priority
                       quality={85}
                     />
                   </div>
 
                   {/* SCAN LINE */}
-                  <div className="absolute inset-0 bg-[linear-gradient(transparent_0%,transparent_calc(50%-1px),var(--cyber-glow-primary)_50%,transparent_calc(50%+1px),transparent_100%)] bg-[length:100%_8px] animate-scanline pointer-events-none" />
+                  {/* <div className="absolute inset-0 bg-[linear-gradient(transparent_0%,transparent_calc(50%-1px),var(--cyber-glow-primary)_50%,transparent_calc(50%+1px),transparent_100%)] bg-[length:100%_8px] animate-scanline pointer-events-none" /> */}
 
                   {/* DECORATIONS ON TOP THE IMAGE */}
                   <div className="absolute inset-0 pointer-events-none">
@@ -124,7 +124,7 @@ export default function Home() {
                 </div>
 
                 {/* TERMINAL OVERLAY */}
-                <TerminalOverlay />
+                {/* <TerminalOverlay /> */}
               </div>
             </div>
           </div>

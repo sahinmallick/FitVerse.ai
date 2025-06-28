@@ -29,7 +29,7 @@ export default function RootLayout({
     <ConvexClerkProvider>
       <html lang="en">
         <body
-          className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+          className={`${geistSans.variable} ${geistMono.variable} antialiased `}
         >
           <Nabvar />
           <div className="fixed inset-0 -z-1">

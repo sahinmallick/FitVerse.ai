@@ -128,7 +128,6 @@ const GenerateProgramPage = () => {
     if (callActive) vapi.stop();
     else {
       try {
-        console.log(process.env.NEXT_PUBLIC_VAPI_WORKFLOW_ID);
         setConnecting(true);
         setMessages([]);
         setCallEnded(false);
