@@ -204,11 +204,11 @@ const GenerateProgramPage = () => {
                 <div className="relative w-full h-full rounded-full bg-card flex items-center justify-center border border-border overflow-hidden">
                   <div className="absolute inset-0 bg-gradient-to-b from-primary/10 to-secondary/10 z-10"></div>
                   <Image
-                    src="/ai-avatar.png"
+                    src="/hero-ai4.png"
                     alt="AI Assistant"
                     fill
                     sizes="(max-width: 768px) 100vw, 50vw"
-                    className="object-cover"
+                    className="object-cover object-center"
                     priority
                   />
                 </div>
