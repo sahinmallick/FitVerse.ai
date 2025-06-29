@@ -1,121 +1,199 @@
-# 🏋️‍♂️ Fitness App - Daily Chart Backend (Convex)
 
-This is the backend implementation for a **Fitness App Daily Chart Provider**, built using [Convex](https://docs.convex.dev/). It powers features like workout tracking, daily progress charts, and nutrition logs.
 
-> ⚙️ Includes auto-generated utility file: `convex/_generated/server.js`.
+# 🧠 FitVerse AI – Your Voice-Powered Fitness Companion
+
+Welcome to **FitVerse AI**, an intelligent, voice-first fitness assistant that adapts to your lifestyle. Just speak — and let AI take care of your personalized workout and meal plans. FitVerse AI helps you stay consistent, motivated, and in control of your fitness journey with a real-time, AI-powered backend built on [Convex](https://docs.convex.dev/).
 
 ---
 
-## 📌 Features
+## 🚀 Live Demo
 
-- 🌐 Public Queries to fetch user fitness data.
-- 🧠 Mutations to update logs, goals, and stats.
-- 🔐 Internal APIs for secure server-only logic.
-- ⚡ HTTP Actions for webhooks, reminders, or 3rd-party integrations.
-- 🛠️ Supports both deterministic and non-deterministic logic with actions.
+👉 [fit-verse-ai.vercel.app](https://fit-verse-ai.vercel.app)
+
+---
+
+## 🌟 Highlights
+
+* 🎙️ Voice-based onboarding & daily interaction powered by Vapi
+* 🏋️‍♂️ Personalized workout and meal plans, updated weekly
+* 📊 Daily chart tracking with Convex backend
+* 📈 Dashboard with activity logs, plan history, and insights
+* 🧠 Editable goals/preferences and AI plan regeneration
+* ⚡ Responsive UI optimized for mobile and desktop
+
+---
+
+## 💡 Vision
+
+Many fitness apps offer generalized routines that lack personalization and motivation. **FitVerse AI** solves this by combining **AI-driven personalization**, **voice interaction**, and **daily progress tracking** into one cohesive experience — empowering users to build healthier habits, consistently.
+
+---
+
+## 🧱 Tech Stack
+
+| Component           | Technology                                  |
+| ------------------- | ------------------------------------------- |
+| Frontend            | Next.js (App Router), Tailwind CSS          |
+| Authentication      | Clerk                                       |
+| Backend & DB        | Convex                                      |
+| AI & Voice Engine   | GPT / Gemini 2.0, Whisper, ElevenLabs, Vapi |
+| Workflow Automation | Vapi AI, custom actions                     |
+| Hosting             | Vercel                                      |
+
+---
+
+## 🔧 Setup & Installation Guide
+
+### 1. Clone the Repository
+
+```bash
+git clone https://github.com/your-username/fitverse-ai.git
+cd fitverse-ai
+```
+
+### 2. Install Dependencies
+
+```bash
+npm install
+```
+
+### 3. Setup Environment Variables
+
+Create a `.env.local` file at the root:
+
+```env
+# Clerk Authentication
+NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=pk_test_1234567890
+CLERK_SECRET_KEY=sk_test_abcdefghij
+
+# Convex Backend
+NEXT_PUBLIC_CONVEX_URL=https://your-team.convex.cloud
+CONVEX_DEPLOY_KEY=convex-deploy-key-here
+
+# AI & Voice APIs
+OPENAI_API_KEY=your_openai_or_gemini_key
+NEXT_PUBLIC_ELEVENLABS_API_KEY=elevenlabs-api-key
+VAPI_API_KEY=vapi-ai-api-key
+```
+
+---
+
+### 4. Configure Convex Backend
+
+```bash
+npx convex init
+npx convex dev
+```
+
+Make sure your project is linked to your Convex team.
+
+---
+
+### 5. Setup Clerk Authentication
+
+Go to [Clerk.dev](https://clerk.dev):
+
+* Create a new project
+* Add web origin: `http://localhost:3000`
+* Copy your Publishable & Secret keys to `.env.local`
+
+---
+
+### 6. Run Locally
+
+```bash
+npm run dev
+```
+
+Then open: [http://localhost:3000](http://localhost:3000)
+
+---
+
+### 7. Deploy to Vercel
+
+1. Push your code to GitHub
+2. Import the repo to [Vercel](https://vercel.com)
+3. Add the same `.env.local` variables in Vercel’s dashboard
+4. Deploy 🚀
 
 ---
 
 ## 📁 Project Structure
 
-```md
+```
+fitverse-ai/
+├── app/                    # Next.js App Router pages
+├── components/             # Reusable UI components
+├── lib/                    # Convex, Clerk, AI logic
+├── convex/                 # Convex backend
+│   ├── _generated/         # Auto-generated server utils
+│   └── functions/          # Core fitness logic
+├── public/                 # Static files
+├── styles/                 # Tailwind config
+├── .env.local              # Environment variables
+└── README.md
+```
 
+---
+
+## 🛠️ Convex Backend Overview
+
+### 🔹 Features
+
+* 📊 Public Queries to fetch user fitness progress
+* 🧠 Mutations to update daily stats, logs, and goals
+* 🔐 Internal APIs for secure operations
+* ⚡ HTTP Actions for webhooks or third-party integrations
+* 📅 Supports both deterministic and non-deterministic logic
+
+### 🔹 Convex File Structure
+
+```
 convex/
-├── \_generated/
-│   └── server.js     # Convex utility exports
+├── _generated/
+│   └── server.js       # Auto-generated server utilities
 ├── functions/
-│   ├── daily.ts      # Core logic for tracking daily workouts
-│   └── utils.ts      # Helper functions for formatting, validation, etc.
-├── http.js           # Optional: HTTP endpoint router
-├── convex.json       # Convex config
-
-````
-
----
-
-## 🚀 Getting Started
-
-### 1. Install dependencies
-
-```bash
-npm install convex
-````
-
-### 2. Initialize Convex
-
-```bash
-npx convex init
-```
-
-### 3. Start Dev Server
-
-```bash
-npx convex dev
-```
-
----
-
-## 🧩 Auto-Generated Server Utility
-
-File: `convex/_generated/server.js`
-
-```ts
-/* eslint-disable */
-/**
- * Generated utilities for implementing server-side Convex query and mutation functions.
- *
- * THIS CODE IS AUTOMATICALLY GENERATED.
- * To regenerate, run `npx convex dev`.
- * @module
- */
-
-import {
-  actionGeneric,
-  httpActionGeneric,
-  queryGeneric,
-  mutationGeneric,
-  internalActionGeneric,
-  internalMutationGeneric,
-  internalQueryGeneric,
-} from "convex/server";
-
-export const query = queryGeneric;
-export const internalQuery = internalQueryGeneric;
-export const mutation = mutationGeneric;
-export const internalMutation = internalMutationGeneric;
-export const action = actionGeneric;
-export const internalAction = internalActionGeneric;
-export const httpAction = httpActionGeneric;
+│   ├── daily.ts        # Core logic for tracking workouts & meals
+│   └── utils.ts        # Formatting and validation helpers
+├── http.js             # Optional: HTTP endpoint router
+├── convex.json         # Convex config
 ```
 
 ---
 
 ## 🔒 Security Guidelines
 
-* Only expose what's necessary to the client.
-* Use `internalQuery`, `internalMutation`, and `internalAction` for sensitive logic.
-* Sanitize all client inputs and validate schemas.
+* Use `internalQuery`, `internalMutation`, and `internalAction` for server-only logic
+* Sanitize all client inputs and validate schemas
+* Never expose sensitive business logic to the frontend
 
 ---
 
-## 👨‍💻 Author
+## ✅ Key Features Delivered
 
-**Monish Mondal**
-Convex Enthusiast | Full-stack Developer
-📫 Let's connect!
+* Voice-powered onboarding & goal setting
+* AI-personalized fitness and meal plans
+* Daily progress tracking & charting
+* Plan history and dashboard insights
+* Full profile customization
+* Secure auth & scalable backend infrastructure
+
+---
+
+## 💬 Troubleshooting
+
+* **Hydration error (Next.js):** Use `useEffect` for client-side only components
+* **Vapi node error:** Ensure all nodes include valid `type`, `name`, and `metadata`
+* **Convex access error:** Verify `CONVEX_DEPLOY_KEY` and project linking
 
 ---
 
-## 📄 License
-
-MIT License. Free to use, fork, and modify.
-
----
 
 ## 💡 Pro Tip
 
-Regenerate all types and bindings anytime using:
+To regenerate Convex types & bindings anytime, run:
 
 ```bash
 npx convex dev
 ```
+
